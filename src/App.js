@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import SearchForm from "./components/SearchForm";
 // import Post from "./views/Post";
-import Posts from "./views/Posts";
+// import Posts from "./views/Posts";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import SearchResults from "./components/SearchResults";
@@ -36,6 +36,7 @@ function App() {
         navigate(searchTerm);
       }
     } catch (err) {
+      alert("Something went wrong!")
       console.error(err);
     }
   };

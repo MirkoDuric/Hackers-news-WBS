@@ -4,7 +4,8 @@ export default function SearchResults({ articles, page, setPage }) {
   return (
     <>
       <ol>
-        {articles.map((article) => (
+        { articles.length === 0 ? <p>No Articles Found</p>
+        : articles.map((article) => (
           <li key={article.objectId}>
             <h4>{article.title}</h4>
             <p>
