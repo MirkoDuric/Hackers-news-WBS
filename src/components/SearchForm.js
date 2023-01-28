@@ -34,11 +34,14 @@ function SearchForm({ isLoading }) {
       />
       <button onClick={handleSearch}>Search</button>
       {articles.map((article) => (
-        <div key={article.objectID}>
-          <a className="lists" href={article.url}>
-            {article.title}
-          </a>
-        </div>
+        <li key={article.objectId}>
+          <h4>{article.title}</h4>
+          <p>
+            <span className="subtext">
+              {article.points} points by {article.author}
+            </span>
+          </p>
+        </li>
       ))}
     </div>
   );

@@ -22,7 +22,16 @@ const Posts = () => {
       <ol>
         {posts.length
           ? posts.map((post) => {
-              return <li key={post.number}>{post.title}</li>;
+              return (
+                <li key={post.objectId}>
+                  <h4>{post.title}</h4>
+                  <p>
+                    <span className="subtext">
+                      {post.points} points by {post.author}
+                    </span>
+                  </p>
+                </li>
+              );
             })
           : null}
       </ol>
