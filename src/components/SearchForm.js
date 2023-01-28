@@ -3,20 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 function SearchForm({ handleSearch, handleInput, searchTerm }) {
   const navigate = useNavigate();
-  // const handleSearch = async () => {
-  //   isLoading(true);
-  //   try {
-  //     const res = await fetch(
-  //       `http://hn.algolia.com/api/v1/search?query=${searchTerm}`
-  //     );
-  //     const data = await res.json();
-  //     setArticles(data.hits);
-  //     navigate(searchTerm);
-  //     isLoading(false);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   return (
     <div>
@@ -54,3 +40,18 @@ export default SearchForm;
 // };
 
 // export default SearchForm;
+
+// const handleSearch = async () => {
+//   isLoading(true);
+//   try {
+//     const res = await fetch(
+//       `http://hn.algolia.com/api/v1/search?query=${searchTerm}`
+//     );
+//     const data = await res.json();
+//     setArticles(data.hits);
+//     navigate(searchTerm);
+//     isLoading(false);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };

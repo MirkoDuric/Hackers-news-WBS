@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import SearchForm from "./components/SearchForm";
@@ -11,22 +11,30 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("react");
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    handleSearch();
+  }, [page]);
+
   const handleSearch = async () => {
-    isLoading(true);
+    setIsLoading(true);
     try {
       const res = await fetch(
         `http://hn.algolia.com/api/v1/search?query=${searchTerm}&page=${page}`
       );
       const data = await res.json();
       setArticles(data.hits);
-      navigate(searchTerm);
-      isLoading(false);
+      setIsLoading(false);
+      if (searchTerm === "react") {
+        navigate("");
+      } else {
+        navigate(searchTerm);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -34,7 +42,6 @@ function App() {
   const handleInput = (e) => {
     setSearchTerm(e.target.value);
   };
-
   return (
     <div>
       <Header />
@@ -45,15 +52,30 @@ function App() {
             isLoading ? (
               <LoadingSpinner />
             ) : (
-              <SearchResults articles={articles} />
+              <SearchResults
+                setPage={(e) => setPage(e)}
+                page={page}
+                articles={articles}
+              />
             )
           }
         />
-        <Route path=":endpointTerm" />
+        <Route
+          path=":endpointTerm"
+          element={
+            isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <SearchResults
+                setPage={(e) => setPage(e)}
+                page={page}
+                articles={articles}
+              />
+            )
+          }
+        />
       </Routes>
-      {/* <Posts searchTerm={searchTerm} /> */}
       <SearchForm
-        isLoading={(e) => setIsLoading(e)}
         handleSearch={handleSearch}
         handleInput={handleInput}
         searchTerm={searchTerm}
@@ -63,3 +85,6 @@ function App() {
 }
 
 export default App;
+// {
+//   isLoading ? <LoadingSpinner /> : <SearchResults articles={articles} />;
+// }
