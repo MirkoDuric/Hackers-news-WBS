@@ -1,10 +1,11 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="header">
       <div>
-        <h1>Hacker News!</h1>
+        <h1>Hacker News</h1>
       </div>
       <div className="navbar">
         <button>new</button>|<button>past</button>|<button>comments</button>|

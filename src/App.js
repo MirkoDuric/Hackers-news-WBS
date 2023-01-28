@@ -29,14 +29,15 @@ function App() {
       );
       const data = await res.json();
       setArticles(data.hits);
+      console.log({ articles });
       setIsLoading(false);
       if (searchTerm === "react") {
-        navigate("");
+        setSearchTerm("");
       } else {
-        navigate(searchTerm);
+        setSearchTerm("");
       }
     } catch (err) {
-      alert("Something went wrong!")
+      alert("Something went wrong!");
       console.error(err);
     }
   };
@@ -44,43 +45,25 @@ function App() {
     setSearchTerm(e.target.value);
   };
   return (
-    <div>
+    <div className="app-container">
       <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            isLoading ? (
-              <LoadingSpinner />
-            ) : (
-              <SearchResults
-                setPage={(e) => setPage(e)}
-                page={page}
-                articles={articles}
-              />
-            )
-          }
+      <div className="content-container">
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <SearchResults
+            setPage={(e) => setPage(e)}
+            page={page}
+            articles={articles}
+          />
+        )}
+
+        <SearchForm
+          handleSearch={handleSearch}
+          handleInput={handleInput}
+          searchTerm={searchTerm}
         />
-        <Route
-          path=":endpointTerm"
-          element={
-            isLoading ? (
-              <LoadingSpinner />
-            ) : (
-              <SearchResults
-                setPage={(e) => setPage(e)}
-                page={page}
-                articles={articles}
-              />
-            )
-          }
-        />
-      </Routes>
-      <SearchForm
-        handleSearch={handleSearch}
-        handleInput={handleInput}
-        searchTerm={searchTerm}
-      />
+      </div>
     </div>
   );
 }

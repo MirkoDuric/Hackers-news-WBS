@@ -1,23 +1,68 @@
+.app-container {
+  width: 85%;
+  margin: 0 auto;
+}
 .header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  background-color: rgb(255, 89, 0);
+  height: 25px;
+}
+.header h1 {
+  font-size: 17px;
+  margin-left: 20px;
 }
 .navbar {
   display: flex;
   margin-left: 20px;
 }
 .navbar > button {
-  background-color: white;
+  background-color: rgb(255, 89, 0);
   border: 0;
   cursor: pointer;
 }
+.content-container {
+  background-color: rgb(237, 237, 231);
+  padding-top: 5px;
+}
+.searchResults button {
+  margin-left: 30px;
+}
+.tryangle-div {
+  display: flex;
+  align-items: center;
+}
+.tryangle {
+  font-size: small;
+  color: #333;
+  opacity: 0.5;
+}
 h4 {
   margin-bottom: 0px;
+  margin-top: 0px;
+  opacity: 0.8;
+  font-size: smaller;
 }
 p {
   margin-top: 0px;
+  margin-bottom: 4px;
 }
 .subtext {
-  font-size: smaller;
+  font-size: small;
+  color: #333;
+  opacity: 0.8;
+  padding-left: 15px;
+}
+.searchForm {
+  text-align: center;
+  padding-bottom: 40px;
+}
+.homepage-btn {
+  margin-left: 10px;
+}
+.hr {
+  height: 2px;
+  background-color: rgb(255, 89, 0);
+  margin: 15px 0 15px;
 }

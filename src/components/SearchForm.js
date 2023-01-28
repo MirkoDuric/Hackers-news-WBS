@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function SearchForm({ handleSearch, handleInput, searchTerm }) {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="searchForm">
+      <div className="hr" />
       <input
         type="text"
         placeholder="Search for articles"
@@ -13,7 +14,6 @@ function SearchForm({ handleSearch, handleInput, searchTerm }) {
         onChange={handleInput}
       />
       <button onClick={handleSearch}>Search</button>
-      <button onClick={() => navigate(-1)}>Go back to homepage</button>
     </div>
   );
 }
