@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const Posts = () => {
+const Posts = ({ searchTerm, isLoading }) => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   useEffect(() => {
@@ -10,7 +10,7 @@ const Posts = () => {
 
   const fetchPosts = async () => {
     const response = await fetch(
-      `http://hn.algolia.com/api/v1/search?query=react&page=${page}`
+      `http://hn.algolia.com/api/v1/search?query=${searchTerm}&page=${page}`
     );
 
     const data = await response.json();

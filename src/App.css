@@ -1,4 +1,23 @@
-* {
-  list-style: none;
-  text-decoration: none;
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar {
+  display: flex;
+  margin-left: 20px;
+}
+.navbar > button {
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+}
+h4 {
+  margin-bottom: 0px;
+}
+p {
+  margin-top: 0px;
+}
+.subtext {
+  font-size: smaller;
 }
